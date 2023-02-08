@@ -1,6 +1,6 @@
 {
-  "short_name": "BlogReact",
-  "name": "React Blog Routers Test",
+  "short_name": "React App",
+  "name": "Create React App Sample",
   "icons": [
     {
       "src": "favicon.ico",

@@ -6,6 +6,7 @@
   border-radius: 10px;
   margin: 1rem;
   position: relative;
+  box-shadow: 5px 5px 5px black;
 }
 .postLink {
   text-decoration: none;

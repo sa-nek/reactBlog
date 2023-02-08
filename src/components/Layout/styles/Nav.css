@@ -25,10 +25,11 @@
   justify-content: center;
   padding: 0.2rem;
   border-radius: 5px;
+  box-shadow: 2px 2px 5px white;
 }
 .link:hover {
-  background-color: rgba(240, 248, 255, 0.412);
-  color: rgb(199, 199, 199);
+  background-color: rgba(240, 248, 255, 0.942);
+  color: rgba(0, 0, 0, 0.695);
 }
 .navBar form {
   padding: 0.3rem;
