@@ -1,0 +1,42 @@
+.navBar {
+  padding: 0.5rem 0.3rem 0.3rem 0.3rem;
+  display: flex;
+  max-width: 100vw;
+  flex-wrap: wrap;
+  background-color: black;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+.navBar ul {
+  list-style-type: none;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+.link {
+  margin: 0.2rem;
+  width: 100%;
+  background-color: aliceblue;
+  display: flex;
+  color: black;
+  font-size: large;
+  text-decoration: none;
+  justify-content: center;
+  padding: 0.2rem;
+  border-radius: 5px;
+}
+.link:hover {
+  background-color: rgba(240, 248, 255, 0.412);
+  color: rgb(199, 199, 199);
+}
+.navBar form {
+  padding: 0.3rem;
+  width: 100%;
+}
+.navBar form input {
+  width: 100%;
+  height: 2rem;
+  border-radius: 10px;
+  padding: 0.4rem;
+}
