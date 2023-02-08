@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/reactBlog/static/css/main.4b465f23.css",
+    "main.css": "/reactBlog/static/css/main.0053ea73.css",
     "main.js": "/reactBlog/static/js/main.1ddafcc5.js",
     "static/media/deleteBtn.svg": "/reactBlog/static/media/deleteBtn.ef631d88a739e6a9020460e48dd3e739.svg",
     "index.html": "/reactBlog/index.html",
-    "main.4b465f23.css.map": "/reactBlog/static/css/main.4b465f23.css.map",
+    "main.0053ea73.css.map": "/reactBlog/static/css/main.0053ea73.css.map",
     "main.1ddafcc5.js.map": "/reactBlog/static/js/main.1ddafcc5.js.map"
   },
   "entrypoints": [
-    "static/css/main.4b465f23.css",
+    "static/css/main.0053ea73.css",
     "static/js/main.1ddafcc5.js"
   ]
 }
