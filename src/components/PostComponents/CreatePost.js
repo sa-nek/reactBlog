@@ -5,6 +5,7 @@ const CreatePost = ({ handleAddPost, createPost, setCreatePost }) => {
   return (
     <main>
       <form onSubmit={handleAddPost} className="createForm">
+        <h2>Create Post</h2>
         <label htmlFor="title">Title</label>
         <input
           type="text"

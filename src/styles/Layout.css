@@ -4,6 +4,11 @@
   padding: 0;
   font-family: "Courier New", Courier, monospace;
 }
+@media screen and (max-width: 400px) {
+  * {
+    font-size: 12px;
+  }
+}
 .App {
   display: flex;
   min-height: 100vh;

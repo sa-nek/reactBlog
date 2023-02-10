@@ -13,6 +13,7 @@
 }
 .postLink h2,
 .singleTitle {
+  padding-right: 1.5rem;
   color: black;
   font-size: 2rem;
   margin-bottom: 0.3rem;
@@ -32,23 +33,34 @@
   margin-bottom: 2rem;
   margin-right: 2rem;
 }
-.deleteBtn {
-  width: 3rem;
+.deleteBtn,
+.editBtn {
+  width: 2.5rem;
   height: auto;
   background-color: rgba(255, 255, 255, 0);
   border: none;
   cursor: pointer;
+}
+.deleteBtn {
   position: absolute;
   bottom: 0.3rem;
   right: 0.3rem;
 }
-.deleteBtn img {
+.deleteBtn img,
+.editBtn img {
   width: 100%;
   opacity: 0.5;
 }
-.deleteBtn img:is(:hover, :active) {
+.deleteBtn img:is(:hover, :active),
+.editBtn img:is(:hover, :active) {
   width: 100%;
   opacity: 0.7;
+}
+.editBtn {
+  width: 2rem;
+  top: 0.3rem;
+  right: 0.3rem;
+  position: absolute;
 }
 .homeBtn {
   width: 20%;

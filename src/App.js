@@ -8,52 +8,90 @@ import PostPage from "./components/PostComponents/PostPage";
 import { useState, useEffect } from "react";
 import { format } from "date-fns";
 import "./styles/Layout.css";
+import api from "./api/Posts";
+import EditPost from "./components/PostComponents/EditPost";
 function App() {
   const navigation = useNavigate();
-  const [posts, setPosts] = useState([
-    {
-      id: 1,
-      datetime: "08.02.2023 15:41",
-      title: "First post",
-      body: "this is testpost 1",
-    },
-    {
-      id: 2,
-      datetime: "08.02.2023 15:41",
-      title: "test2",
-      body: "this is testpost 2",
-    },
-  ]);
+  const [posts, setPosts] = useState([]);
   const [createPost, setCreatePost] = useState({
+    title: "",
+    body: "",
+  });
+  const [editPost, setEditPost] = useState({
     title: "",
     body: "",
   });
   const [search, setSearch] = useState("");
   const [searchItems, setSearchItems] = useState([]);
-  useEffect(
-    (e) => {
-      const newArr = posts.filter(
-        (post) =>
-          post.title.toLowerCase().includes(search.toLowerCase()) ||
-          post.body.toLowerCase().includes(search.toLowerCase())
-      );
-      setSearchItems(newArr.reverse());
-    },
-    [posts, search]
-  );
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const response = await api.get("/posts");
+        setPosts(response.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchPosts();
+  }, []);
+  useEffect(() => {
+    const newArr = posts.filter(
+      (post) =>
+        post.title.toLowerCase().includes(search.toLowerCase()) ||
+        post.body.toLowerCase().includes(search.toLowerCase())
+    );
+    setSearchItems(newArr.reverse());
+  }, [posts, search]);
   const handleAddPost = (e) => {
     e.preventDefault();
     const newDate = format(new Date(), "dd.MM.yyyy  HH:mm");
     const newId = posts.length ? posts[posts.length - 1].id + 1 : 1;
-    const newItem = { ...createPost, datetime: newDate, id: newId };
-    const newArr = [...posts, newItem];
-    setPosts(newArr);
-    setCreatePost({ title: "", body: "" });
-    navigation("/");
+    const newItem = {
+      ...createPost,
+      datetime: newDate,
+      id: newId,
+      edittime: null,
+    };
+    try {
+      const pushPost = async (post) => {
+        const response = await api.post("/posts", post);
+        const newArr = [...posts, response.data];
+        setPosts(newArr);
+      };
+      pushPost(newItem);
+      setCreatePost({ title: "", body: "" });
+      navigation("/");
+    } catch (err) {
+      console.log(err);
+    }
   };
   const handleDeletePost = (postId) => {
-    const newArr = posts.filter((post) => post.id !== postId);
-    setPosts(newArr);
+    const delApi = async (id) => {
+      try {
+        await api.delete(`/posts/${id}`);
+        const newArr = posts.filter((post) => post.id !== postId);
+        setPosts(newArr);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    delApi(postId);
+    navigation("/");
+  };
+  const handleEdit = async (id) => {
+    const newArr = posts.map((post) =>
+      post.id === editPost.id ? editPost : post
+    );
+    try {
+      await api.put(`/posts/${id}`, editPost);
+      setPosts(newArr);
+    } catch (err) {
+      console.log(err);
+    }
+    setEditPost({
+      title: "",
+      body: "",
+    });
     navigation("/");
   };
   return (
@@ -82,6 +120,18 @@ function App() {
                   navigation={navigation}
                   posts={posts}
                   handleDeletePost={handleDeletePost}
+                />
+              }
+            />
+            <Route
+              path=":id/edit"
+              element={
+                <EditPost
+                  posts={posts}
+                  editPost={editPost}
+                  setEditPost={setEditPost}
+                  handleEdit={handleEdit}
+                  navigation={navigation}
                 />
               }
             />

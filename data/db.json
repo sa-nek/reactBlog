@@ -1,0 +1,25 @@
+{
+  "posts": [
+    {
+      "title": "My new post",
+      "body": "edited",
+      "datetime": "10.02.2023  15:04",
+      "id": 1,
+      "edittime": "10.02.2023  15:06"
+    },
+    {
+      "title": "фывфывфыв",
+      "body": "фывфывфыв",
+      "datetime": "10.02.2023  15:08",
+      "id": 2,
+      "edittime": null
+    },
+    {
+      "title": "12312312",
+      "body": "3123123авывывфы",
+      "datetime": "10.02.2023  15:08",
+      "id": 3,
+      "edittime": null
+    }
+  ]
+}
