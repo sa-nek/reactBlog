@@ -3,18 +3,33 @@ import "./styles/PostArticle.css";
 import { useParams } from "react-router-dom";
 import deleteBtn from "./deleteBtn.svg";
 import editBtn from "./editBtn.svg";
-const PostPage = ({ posts, navigation, handleDeletePost }) => {
+import { useContext } from "react";
+import DataContext from "../../context/DataContext";
+import api from "../../api/Posts";
+const PostPage = () => {
+  const { posts, navigation, setPosts } = useContext(DataContext);
   const { id } = useParams();
   const post = posts.find((post) => post.id.toString() === id);
+  const handleDeletePost = (postId) => {
+    const delApi = async (id) => {
+      try {
+        await api.delete(`/posts/${id}`);
+        const newArr = posts.filter((post) => post.id !== postId);
+        setPosts(newArr);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    delApi(postId);
+    navigation("/");
+  };
   const returnPost = (post) => (
     <article className="postArticle">
       <h2 className="singleTitle">{post.title}</h2>
       <p className="singleDate">{post.datetime}</p>
       <p className="singleBody">{post.body}</p>
-      {post.edittime ? (
+      {post.edittime && (
         <p className="singleDate">{`edited: ${post.edittime}`}</p>
-      ) : (
-        <p className="singleDate">original</p>
       )}
       <button className="deleteBtn" onClick={(e) => handleDeletePost(post.id)}>
         <img src={deleteBtn} alt="delBtn" />

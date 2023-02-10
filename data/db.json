@@ -1,25 +1,25 @@
 {
   "posts": [
     {
-      "title": "My new post",
-      "body": "edited",
-      "datetime": "10.02.2023  15:04",
-      "id": 1,
-      "edittime": "10.02.2023  15:06"
-    },
-    {
-      "title": "фывфывфыв",
-      "body": "фывфывфыв",
-      "datetime": "10.02.2023  15:08",
+      "title": "1231231212312312",
+      "body": "31233123",
+      "datetime": "10.02.2023  22:18",
       "id": 2,
-      "edittime": null
+      "edittime": "10.02.2023  22:24"
     },
     {
-      "title": "12312312",
-      "body": "3123123авывывфы",
-      "datetime": "10.02.2023  15:08",
+      "title": "123123",
+      "body": "23",
+      "datetime": "10.02.2023  22:24",
       "id": 3,
-      "edittime": null
+      "edittime": "10.02.2023  22:25"
+    },
+    {
+      "title": "dfsa",
+      "body": "dfsaa",
+      "datetime": "10.02.2023  22:25",
+      "id": 4,
+      "edittime": "10.02.2023  22:25"
     }
   ]
 }

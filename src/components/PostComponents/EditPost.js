@@ -1,13 +1,37 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { format } from "date-fns";
+import { useContext } from "react";
+import DataContext from "../../context/DataContext";
+import api from "../../api/Posts";
 
-const EditPost = ({ posts, editPost, setEditPost, handleEdit }) => {
+const EditPost = () => {
+  const { posts, setPosts, navigation } = useContext(DataContext);
   const id = useParams().id;
+  const [editPost, setEditPost] = useState({
+    title: "",
+    body: "",
+  });
   const editedPost = posts.find((post) => post.id.toString() === id);
   useEffect(() => {
     editedPost && setEditPost(editedPost);
   }, [editedPost, setEditPost]);
+  const handleEdit = async (id) => {
+    const newArr = posts.map((post) =>
+      post.id === editPost.id ? editPost : post
+    );
+    try {
+      await api.put(`/posts/${id}`, editPost);
+      setPosts(newArr);
+    } catch (err) {
+      console.log(err);
+    }
+    setEditPost({
+      title: "",
+      body: "",
+    });
+    navigation("/");
+  };
   return (
     <main>
       <form

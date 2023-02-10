@@ -1,8 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./styles/Nav.css";
+import DataContext from "../../context/DataContext";
+import { useContext } from "react";
 
-const Nav = ({ search, setSearch }) => {
+const Nav = () => {
+  const { search, setSearch } = useContext(DataContext);
   return (
     <nav className="navBar">
       <ul>
